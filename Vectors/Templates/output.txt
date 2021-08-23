@@ -1,0 +1,2 @@
+Capacity 8
+G H I L P 

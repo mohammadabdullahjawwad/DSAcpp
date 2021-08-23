@@ -1,0 +1,20 @@
+Strings - 
+1. Finding CB Numbers
+
+Searching and Sorting
+1. Pivot of sorted and rotated array
+
+Recursion
+1. Tiling Problem - II
+2. Subset Sum Easy
+
+Backtracking
+1. Sum it up
+
+Linked List
+1. Circular Linked List
+2. Sort LL Insertion sort
+
+Trees
+1. Largest BST in a BT
+2. Print all nodes at a distance k from a given node

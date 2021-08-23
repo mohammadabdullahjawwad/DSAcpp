@@ -1,0 +1,5 @@
+4
+Audi 1 2
+BMW 2 2
+Jaguar 1 0
+Fortuner 0 1

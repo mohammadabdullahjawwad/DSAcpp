@@ -1,0 +1,2 @@
+3 is present at index 2
+30 is present at index 6

@@ -1,0 +1,2 @@
+Inside function 11
+Inside main 11
