@@ -31,7 +31,7 @@ int stringToInt(char* str, int n) {
 }
 
 int main() {
-    // OJ;
+    OJ;
     FIO;
     // string str;
     char str[100];
