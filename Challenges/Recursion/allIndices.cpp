@@ -1,29 +1,37 @@
 #include <iostream>
 using namespace std;
 
-int length;
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
 
-void allIndices(int a[], int n, int key) {
-    if(n == 0) {
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
+void allIndices(int a[], int n, int i, int key) {
+    if(i == n) {
         return;
     }
-    if(a[length-n] == key) {
-        cout << length-n << " ";
+    if(a[i] == key) {
+        cout << i << " ";
     }
-    allIndices(a, n-1, key);
+    allIndices(a, n, i + 1, key);
 }
 
 int main() {
+    OJ;
+    FIO;
     int n;
     cin >> n;
-    length = n;
     int a[n];
     for(int i=0; i<n; i++) {
         cin >> a[i];
     }
     int key;
     cin >> key;
-    allIndices(a, n, key);
+    allIndices(a, n, 0, key);
     cout << endl;
     return 0;
 }

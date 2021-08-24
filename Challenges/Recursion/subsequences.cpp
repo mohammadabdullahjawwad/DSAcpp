@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 int count = 0;
 
 void subsequences(char* str, char* str1, int i, int j) {
@@ -16,6 +25,8 @@ void subsequences(char* str, char* str1, int i, int j) {
 }
 
 int main() {
+    OJ;
+    FIO;
     char str[1000];
     cin >> str;
     char str1[1000];
