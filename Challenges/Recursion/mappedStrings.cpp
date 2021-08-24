@@ -1,7 +1,16 @@
 #include <iostream>
 using namespace std;
 
-void hashmap(char in[],int i, int j, char out[]) {
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
+void hashmap(char in[], int i, int j, char out[]) {
     if(in[i] == '\0') {
         out[j] = '\0';
         cout << out << endl;
@@ -25,6 +34,8 @@ void hashmap(char in[],int i, int j, char out[]) {
 }
 
 int main() {
+    OJ;
+    FIO;
     char in[10];
     cin >> in;
     char out[10];

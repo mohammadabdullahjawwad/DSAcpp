@@ -1,2 +1,3 @@
- d c cd b bd bc bcd a ad ac acd ab abd abc abcd 
-16
+ABC
+AW
+LC
