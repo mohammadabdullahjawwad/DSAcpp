@@ -1,22 +1,28 @@
 #include <iostream>
 using namespace std;
 
-int count = 0, sum = 0;
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
 
-void subsetSum(int* a, int n, int sum, int i) {
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
+bool subsetSum(int* a, int n, int sum, int flag, int i) {
     if(i == n) {
-        if(sum == 0) {
-            count++;
+        if(sum == 0 && flag > 0) {
+            return true;
         }
-        sum = 0;
-        return;
+        return false;
     }
-    subsetSum(a, n, sum, i+1);
-    sum += a[i];
-    subsetSum(a, n, sum, i+1);
+    return subsetSum(a, n, sum, flag, i + 1) || subsetSum(a, n, sum + a[i], flag + 1, i + 1);
 }
 
 int main() {
+    OJ;
+    FIO;
     int t;
     cin >> t;
     while(t--) {
@@ -26,15 +32,15 @@ int main() {
         for(int i=0; i<n; i++) {
             cin >> a[i];
         }
-        int sum = 0;
-        subsetSum(a, n, sum, 0);
-        if(count > 1) {
-            cout << "Yes" << endl;
-        } else {
-            cout << "No" << endl;
+        int flag = 0;
+        int ans = subsetSum(a, n, 0, flag, 0);
+        if(ans) {
+            cout << "Yes";
         }
+        else {
+            cout << "No";
+        }
+        cout << endl;
     }
     return 0;
 }
-
-// As of now the problem is incomplete
