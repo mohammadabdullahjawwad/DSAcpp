@@ -1,14 +1,22 @@
-#include <bits/stdc++.h>
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
+
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
 
 string table[] = { " ", ".+@$", "abc", "def", "ghi", "jkl" , "mno", "pqrs" , "tuv", "wxyz" };
 string searchIn[] = {"prateek", "sneha", "deepak", "arnav", "shikha", "palak", "utkarsh", "divyam", "vidhi", "sparsh", "akku"};
 
 void check(char* output) {
     int lenout = strlen(output);
-    for(int i=0; i<10; i++) {
+    for(int i=0; i<sizeof(searchIn)/sizeof(string); i++) {
         int len = searchIn[i].length();
         for(int j=0; j<len-lenout; j++) {
             int k;
@@ -39,6 +47,8 @@ void keys(char* input, char* output, int i, int j) {
 }
 
 int main() {
+    OJ;
+    FIO;
     char input[100];
     char output[100];
     cin >> input;
