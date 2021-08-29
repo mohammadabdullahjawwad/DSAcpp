@@ -1,26 +1,34 @@
 #include <iostream>
 using namespace std;
 
-void parenthesis(char arr[], int o, int c, int i, int n) {
-    if(i == 2*n) {
-        arr[i] = '\0';
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
+void parenthesis(string arr, int o, int c, int i, int n) {
+    if(i == 2 * n) {
         cout << arr << endl;
         return;
     }
     if(c < o) {
-        arr[i] = ')';
-        parenthesis(arr, o, c+1, i+1, n);
+        parenthesis(arr + ')', o, c + 1, i + 1, n);
     }
     if(o < n) {
-        arr[i] = '(';
-        parenthesis(arr, o+1, c, i+1, n);
+        parenthesis(arr + '(', o + 1, c, i + 1, n);
     }
 }
 
 int main() {
+    OJ;
+    FIO;
     int n;
     cin >> n;
-    char arr[25];
+    string arr;
     parenthesis(arr, 0, 0, 0, n);
     return 0;
 }

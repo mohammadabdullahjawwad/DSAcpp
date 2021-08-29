@@ -1,36 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int ans = 0;
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
 
-void sum(int a[], int result[], int i, int key) {
-    if(ans == key) {
-        // Print the numbers
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
+set<vector<int>> s;
+
+void sumUp(vector<int>& a, vector<int> out, int ans, int i, int n, int key) {
+    if(i == n) {
+        if(ans == key) {
+            sort(out.begin(), out.end());
+            s.insert(out);
+        }
         return;
     }
-    if(ans > key) {
-        ans = 0;
-        sum(a, result, i+1, key);
-    }
-    if(ans < key) {
-        
-    }
-
+    out.push_back(a[i]);
+    sumUp(a, out, ans + a[i], i + 1, n, key);
+    out.pop_back();
+    sumUp(a, out, ans, i + 1, n, key);
 }
 
 int main() {
+    OJ;
+    FIO;
     int n;
     cin >> n;
-    int a[1000];
+    vector<int> a(n);
     for(int i=0; i<n; i++) {
         cin >> a[i];
     }
-    sort(a, a+n);
     int key;
     cin >> key;
-    int result[1000] = {0};
-    sum(a, result, 0, key);
+    vector<int> out;
+    sumUp(a, out, 0, 0, n, key);
+    for(auto v: s) {
+        for( int i = 0; i < v.size(); i++) {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }
-
-// This problem in incomplete as of now

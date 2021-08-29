@@ -47,7 +47,7 @@ void insertAtHead(node*& head, int data) {
         head = new node(data);
         return;
     }
-    node* n = new node(data); // We use dynamic allocation so that is object persists even after this function is removed from stack. It is because we need it even after this function is removed from stack!
+    node* n = new node(data); // We use dynamic allocation so that this object persists even after this function is removed from stack. It is because we need it even after this function is removed from stack!
     n->next = head; // We can equivalently write (*n).next = head;
     head = n;
 }
