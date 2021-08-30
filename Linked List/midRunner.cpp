@@ -14,8 +14,6 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
@@ -38,12 +36,11 @@ void buildList(node*& head) { // This may or may not accept the head
 }
 
 void print(node* head) {
-    // node*temp = head;
     while(head != NULL) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL";
 }
 
 node* midpoint(node* head) {
@@ -74,8 +71,8 @@ int main() {
     FIO;
     node* head = NULL;
     cin >> head;
-    cout << head;
-    node *mid = midpoint(head);
+    cout << head << endl;
+    node* mid = midpoint(head);
     cout << mid->data << endl;
     return 0;
 }

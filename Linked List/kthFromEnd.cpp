@@ -14,8 +14,6 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
@@ -28,7 +26,7 @@ void insertAtHead(node*& head, int data) {
     head = n;
 }
 
-void buildList(node*& head) { // This may or may not accept the head
+void buildList(node*& head) {
     int data;
     cin >> data;
     while(data != -1) {
@@ -42,7 +40,7 @@ void print(node* head) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL";
 }
 
 node* kthFromEnd(node* head, int k) {
@@ -73,7 +71,7 @@ int main() {
     FIO;
     node* head = NULL;
     cin >> head;
-    cout << head;
+    cout << head << endl;
     int k;
     cin >> k;
     node* kth = kthFromEnd(head, k);

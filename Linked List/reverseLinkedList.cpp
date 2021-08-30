@@ -14,8 +14,6 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
@@ -28,7 +26,7 @@ void insertAtHead(node*& head, int data) {
     head = n;
 }
 
-void buildList(node*& head) { // This may or may not accept the head
+void buildList(node*& head) {
     int data;
     cin >> data;
     while(data != -1) {
@@ -42,7 +40,7 @@ void print(node* head) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL";
 }
 
 void reverseIteratively(node *&head) {
@@ -50,7 +48,7 @@ void reverseIteratively(node *&head) {
     node *P = NULL;
     node *N;
     while(C != NULL) {
-        N = C->next; // Save the next node
+        N = C->next; // Saves the next node
         C->next = P;
         P = C;
         C = N;
@@ -58,13 +56,13 @@ void reverseIteratively(node *&head) {
     head = P;
 }
 
-node* reverseRecursively(node *head) {
-    // Base Case - LL with one or zero nodes is already sorted
-    if(head->next == NULL || head == NULL) {
+node* reverseRecursively(node* head) {
+    // Base Case - LL having zero or one node is already sorted
+    if(head == NULL || head->next == NULL) {
         return head;
     }
     // Recursive Case
-    node *smallHead = reverseRecursively(head->next);
+    node* smallHead = reverseRecursively(head->next);
     head->next->next = head;
     head->next = NULL;
     return smallHead;
@@ -85,10 +83,10 @@ int main() {
     FIO;
     node* head = NULL;
     cin >> head;
-    cout << head;
+    cout << head << endl;
     // reverseIteratively(head);
-    // cout << head;
+    // cout << head << endl;
     head = reverseRecursively(head);
-    cout << head;
+    cout << head << endl;
     return 0;
 }

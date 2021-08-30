@@ -14,25 +14,30 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
     }
 };
 
-void insertAtHead(node*& head, int data) {
-    node*n = new node(data);
-    n->next = head;
-    head = n;
+void insertAtTail(node*& head, int data) {
+    if(head == NULL) {
+        head = new node(data);
+        return;
+    }
+    node* tail = head;
+    while(tail->next != NULL) {
+        tail = tail->next;
+    }
+    tail->next = new node(data);
+    return;
 }
 
-void buildList(node*& head) { // This may or may not accept the head
+void buildList(node*& head) {
     int data;
     cin >> data;
     while(data != -1) {
-        insertAtHead(head, data);
+        insertAtTail(head, data);
         cin >> data;
     }
 }
@@ -42,7 +47,17 @@ void print(node* head) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL";
+}
+
+istream& operator>>(istream& is, node*& head) {
+    buildList(head);
+    return is;
+}
+
+ostream& operator<<(ostream& os, node* head) {
+    print(head);
+    return os;
 }
 
 node* merge(node* a, node* b) {
@@ -64,24 +79,14 @@ node* merge(node* a, node* b) {
     return c;
 }
 
-istream& operator>>(istream& is, node*& head) {
-    buildList(head);
-    return is;
-}
-
-ostream& operator<<(ostream& os, node* head) {
-    print(head);
-    return os;
-}
-
 int main() {
     OJ;
     FIO;
     node* head = NULL;
     node* head2 = NULL;
     cin >> head >> head2;
-    cout << head << head2;
+    cout << head << endl << head2 << endl;
     head = merge(head, head2);
-    cout << head;
+    cout << head << endl;
     return 0;
 }

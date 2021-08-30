@@ -57,7 +57,7 @@ void print(node* head) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL" << endl;
 }
 
 void insertAtTail(node*& head, int data) {
@@ -74,7 +74,7 @@ void insertAtTail(node*& head, int data) {
 
 void insertInMiddle(node*& head, int data, int p) {
     // Insert at the Start
-    if((head == NULL) || (p == 0)) {
+    if(head == NULL || p == 0) {
         insertAtHead(head, data);
         return;
     }
@@ -104,47 +104,37 @@ void deleteAtHead(node*& head) {
     delete head;
     head = temp;
 }
+
 void deleteAtTail(node*& head) {
     node* prev = NULL;
-    node *temp = head;
+    node* temp = head;
     while(temp->next != NULL) {
         prev = temp;
         temp = temp->next;
     }
     prev->next = NULL;
     delete temp;
-    return;
 }
 
-void deleteInMiddle(node *& head, int p) {
-    if((head == NULL) || (p == 0)) {
+void deleteInMiddle(node *& head, int p) { // deletes the node after position p (1 indexed nodes)
+    if(head == NULL || p == 0) {
         deleteAtHead(head);
+        return;
     }
-    else if(p > length(head)) {
+    if(p + 1 >= length(head)) {
         deleteAtTail(head);
+        return;
     }
-    else {
-        int jump = 1;
-        node* prev = NULL;
-        node* temp = head;
-        while(jump <= p-1) {
-            prev =  temp;
-            temp = temp->next;
-            jump++;
-        }
-        prev->next = temp->next;
-        delete temp;
+    int jump = 1;
+    node* prev = head;
+    node* temp = head->next;
+    while(jump < p) {
+        prev = temp;
+        temp = temp->next;
+        jump++;
     }
-}
-
-bool searchIterative(node* head, int key) {
-    while(head != NULL) {
-        if(head->data == key) {
-            return true;
-        }
-        head = head->next;
-    }
-    return false;
+    prev->next = temp->next;
+    delete temp;
 }
 
 bool searchRecursive(node* head, int key) {
@@ -157,21 +147,29 @@ bool searchRecursive(node* head, int key) {
     return searchRecursive(head->next, key);
 }
 
+bool searchIterative(node* head, int key) {
+    while(head != NULL) {
+        if(head->data == key) {
+            return true;
+        }
+        head = head->next;
+    }
+    return false;
+}
+
 int main() {
     OJ;
     FIO;
     node* head = NULL;
     insertAtHead(head, 5);
-    insertAtHead(head, 2);
-    insertAtHead(head, 1);
-    insertAtHead(head, 0);
-    print(head);
-    insertInMiddle(head, 4, 3);
-    insertAtTail(head, 7);
+    insertAtHead(head, 4);
+    insertAtHead(head, 3);
+    insertAtTail(head, 6);
+    insertInMiddle(head, 2, 3);
     print(head);
     deleteAtHead(head);
-    // deleteAtTail(head);
-    // deleteInMiddle(head, 2);
+    deleteAtTail(head);
+    deleteInMiddle(head, 2);
     print(head);
     int key;
     cin >> key;
@@ -181,11 +179,12 @@ int main() {
     else {
         cout << "Not present!" << endl;
     }
-    // if(searchIterative(head, 4)) {
-    //     cout << "Present!" << endl;
-    // }
-    // else {
-    //     cout << "Not present!" << endl;
-    // }
+    cin >> key;
+    if(searchIterative(head, key)) {
+        cout << "Present!" << endl;
+    }
+    else {
+        cout << "Not present!" << endl;
+    }
     return 0;
 }

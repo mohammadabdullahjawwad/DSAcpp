@@ -1,4 +1,4 @@
-// This is not complete. We have to provide input and then check for the program. I don't know how to provide input (loop)!
+// This is not complete. We have to provide input and then check for the program. I don't understand how to provide input (loop)!
 
 #include <iostream>
 using namespace std;
@@ -7,8 +7,6 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
@@ -29,12 +27,11 @@ void insertAtTail(node*& head, int data) {
 }
 
 void print(node* head) {
-    // node*temp = head;
     while(head != NULL) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL";
 }
 
 void buildList(node*& head) { // This may or may not accept the head
@@ -90,9 +87,9 @@ node* removeCycle(node* head) {
 int main() {
     node* head = NULL;
     cin >> head;
+    cout << head << endl;
     if(detectCycle(head) == true) {
-        cout << removeCycle(head);
+        cout << removeCycle(head) << endl;
     }
-    cout << head;
     return 0;
 }

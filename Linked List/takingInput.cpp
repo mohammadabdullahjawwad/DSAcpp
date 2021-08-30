@@ -12,10 +12,10 @@ using namespace std;
 
 class node {
 public:
+
     int data;
     node* next;
 
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
@@ -45,13 +45,13 @@ void insertAtTail(node*& head, int data) {
     return;
 }
 
-void buildList(node*& head) { // This may or may not accept the head
+void buildList(node*& head) {
     int data;
     cin >> data;
     while(data != -1) {
     // while(cin >> data) { // When taking input from a file
-        insertAtHead(head, data);
-        // insertAtTail(head, data);
+        // insertAtHead(head, data);
+        insertAtTail(head, data);
         cin >> data;
     }
 }
@@ -61,7 +61,7 @@ void print(node* head) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL" << endl;
 }
 
 int main() {

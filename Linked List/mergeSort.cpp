@@ -14,8 +14,6 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
@@ -51,7 +49,7 @@ void print(node* head) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
+    cout << "NULL";
 }
 
 istream& operator>>(istream& is, node*& head) {
@@ -62,6 +60,19 @@ istream& operator>>(istream& is, node*& head) {
 ostream& operator<<(ostream& os, node* head) {
     print(head);
     return os;
+}
+
+node* midpoint(node* head) {
+    if(head == NULL || head->next == NULL) {
+        return head;
+    }
+    node* slow = head;
+    node* fast = head->next;
+    while(fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow;
 }
 
 node* merge(node* a, node* b) {
@@ -83,19 +94,6 @@ node* merge(node* a, node* b) {
     return c;
 }
 
-node* midpoint(node* head) {
-    if(head == NULL || head->next == NULL) {
-        return head;
-    }
-    node* slow = head;
-    node* fast = head->next;
-    while(fast != NULL && fast->next != NULL) {
-        fast = fast->next->next;
-        slow = slow->next;
-    }
-    return slow;
-}
-
 node* mergeSort(node* head) {
     if(head == NULL || head->next == NULL) {
         return head;
@@ -115,8 +113,8 @@ int main() {
     FIO;
     node* head = NULL;
     cin >> head;
-    cout << head;
+    cout << head << endl;
     head = mergeSort(head);
-    cout << head;
+    cout << head << endl;
     return 0;
 }

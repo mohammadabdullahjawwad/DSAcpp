@@ -14,23 +14,11 @@ class node {
 public:
     int data;
     node* next;
-
-    // Constructor
     node(int d) {
         data = d;
         next = NULL;
     }
 };
-
-// class linkedList {
-//     node*head;
-//     node*tail;
-// public:
-//     linkedList() {
-//         head = NULL;
-//         tail = NULL;
-//     }
-// }
 
 int length(node* head) {
     int len = 0;
@@ -41,9 +29,8 @@ int length(node* head) {
     return len;
 }
 
-// Passing a pointer variable by reference
 void insertAtHead(node*& head, int data) {
-    node*n = new node(data); // We use dynamic allocation so that is object persists even after this function is removed from stack. It is because we need it even after this function is removed from stack!
+    node*n = new node(data);
     n->next = head;
     head = n;
 }
@@ -65,10 +52,12 @@ void insertInMiddle(node*& head, int data, int p) {
     // Insert at the Start
     if((head == NULL) || (p == 0)) {
         insertAtHead(head, data);
+        return;
     }
     // Insert at the End
-    else if(p > length(head)) {
+    if(p > length(head)) {
         insertAtTail(head, data);
+        return;
     }
     // Insert in the middle
     int jump = 1;
@@ -83,76 +72,13 @@ void insertInMiddle(node*& head, int data, int p) {
     temp->next = n;
 }
 
-bool searchRecursive(node* head, int key) {
-    if(head == NULL) {
-        return false;
-    }
-    if(head->data == key) {
-        return true;
-    }
-    return searchRecursive(head->next, key);
-}
-
-bool searchIterative(node* head, int key) {
-    while(head != NULL) {
-        if(head->data == key) {
-            return true;
-        }
-        head = head->next;
-    }
-    return false;
-}
-
 void print(node* head) {
     // node*temp = head;
     while(head != NULL) {
         cout << head->data << "->";
         head = head->next;
     }
-    cout << endl;
-}
-
-void deleteAtHead(node*& head) {
-    if(head == NULL) {
-        return;
-    }
-    node* temp = head;
-    head = head->next;
-    delete temp;
-    return;
-}
-void deleteAtTail(node*& head) {
-    node* prev = NULL;
-    node *temp = head;
-    while(temp->next != NULL) {
-        prev = temp;
-        temp = temp->next;
-    }
-    prev->next = NULL;
-    delete temp;
-    return;
-}
-
-void deleteInMiddle(node *& head, int p) {
-    if((head == NULL) || (p == 0)) {
-        deleteAtHead(head);
-    }
-    else if(p > length(head)) {
-        deleteAtTail(head);
-    }
-    else {
-        int jump = 1;
-        node* prev = NULL;
-        node* temp = head;
-        while(jump <= p-1) {
-            prev =  temp;
-            temp = temp->next;
-            jump++;
-        }
-        delete temp;
-        prev->next = temp->next;
-        return;
-    }
+    cout << "NULL";
 }
 
 void buildList(node*& head) { // This may or may not accept the head
@@ -180,6 +106,6 @@ int main() {
     node* head = NULL;
     node* head2 = NULL;
     cin >> head >> head2;
-    cout << head << head2;
+    cout << head << endl << head2;
     return 0;
 }
