@@ -3,7 +3,18 @@
 #include <unordered_map>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 int main() {
+    OJ;
+    FIO;
     queue<char> qu;
     unordered_map<char, int> mp;
     char ch;
