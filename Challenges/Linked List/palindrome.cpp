@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -41,6 +50,8 @@ bool palindrome(node* head, node* headr) {
 }
 
 int main() {
+    OJ;
+    FIO;
     node* head = NULL;
     node* headr = NULL;
     int n;
@@ -53,10 +64,10 @@ int main() {
     }
     int res;
     if(palindrome(head, headr)) {
-        cout << "True" << endl;
+        cout << "true" << endl;
     }
     else {
-        cout << "False" << endl;
+        cout << "false" << endl;
     }
     return 0;
 }

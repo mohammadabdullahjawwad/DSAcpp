@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -31,9 +40,7 @@ void insertionSort(node* head) {
         sorted = head;
         while(sorted != unsorted) {
             if(sorted->data > unsorted->data) {
-                int temp = unsorted->data;
-                unsorted->data = sorted->data;
-                sorted->data = temp;
+                swap(unsorted->data, sorted->data);
             }
             else {
                 sorted = sorted->next;
@@ -52,6 +59,8 @@ void print(node* head) {
 }
 
 int main() {
+    OJ;
+    FIO;
     node* head = NULL;
     int n;
     cin >> n;

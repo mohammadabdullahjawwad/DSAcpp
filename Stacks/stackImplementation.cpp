@@ -2,7 +2,16 @@
 #include <vector>
 using namespace std;
 
-template<typename T, typename U> // Converting into templste class in order to generalise the return data type
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
+template<typename T, typename U> // Converting into template class in order to generalise the data type
 class Stack {
 private: // We don't want the user to know what is inside the stack
     vector<T> v;
@@ -20,17 +29,19 @@ public:
         }
     }
     T top() {
-        return v[v.size()-1];
+        return v[v.size() - 1];
     }
 };
 
 int main() {
+    OJ;
+    FIO;
     Stack<int, long> s;
     for(int i=0; i<5; i++) {
         s.push(i*i);
     }
     while(!s.empty()) {
-        cout << s.top() << "\n";
+        cout << s.top() << " ";
         s.pop();
     }
     cout << "\n";
@@ -39,7 +50,7 @@ int main() {
         t.push(i);
     }
     while(!t.empty()) {
-        cout << t.top() << "\n";
+        cout << t.top() << " ";
         t.pop();
     }
     cout << "\n";

@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -29,7 +38,7 @@ void kAppend(node*& head, int k, int n) {
 	}
     node* prev = head;
     node* curr = head->next;
-    for(int i=1; i<n-k; i++) {
+    for(int i = 1; i < n - k; i++) {
         prev = curr;
         curr = curr->next;
     }
@@ -51,6 +60,8 @@ void print(node* head) {
 }
 
 int main() {
+    OJ;
+    FIO;
     node* head = NULL;
     int n;
     cin >> n;

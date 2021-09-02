@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -31,10 +40,9 @@ void evenAfterOdd(node*& head) {
     node* even = NULL;
     node* temp = head;
     while(temp != NULL) {
-        if(temp->data%2 == 0) {
+        if(temp->data % 2 == 0) {
             insertAtEnd(even, temp->data);
-        }
-        else {
+        } else {
             insertAtEnd(odd, temp->data);
         }
         temp = temp->next;
@@ -56,6 +64,8 @@ void print(node* head) {
 }
 
 int main() {
+    OJ;
+    FIO;
     node* head = NULL;
     int n;
     cin >> n;

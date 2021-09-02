@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -40,7 +49,7 @@ node* kReverse(node* head, int k) {
     if(n != NULL) {
         head->next = kReverse(n, k);
     }
-    return p; // This is the new head
+    return p;
 }
 
 void print(node* head) {
@@ -52,6 +61,8 @@ void print(node* head) {
 }
 
 int main() {
+    OJ;
+    FIO;
     node* head = NULL;
     int n, k;
     cin >> n >> k;

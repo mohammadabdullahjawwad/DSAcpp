@@ -2,9 +2,18 @@
 #include <stack>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 bool balance(string str) {
     stack<char> s;
-    for(int i=0; i<str.size(); i++) {
+    for(int i=0; i<str.length(); i++) {
         if(str[i] == '(') {
             s.push(str[i]);
         }
@@ -22,6 +31,8 @@ bool balance(string str) {
 }
 
 int main() {
+    OJ;
+    FIO;
     string str;
     cin >> str;
     if(balance(str)) {

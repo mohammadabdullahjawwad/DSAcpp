@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -37,6 +46,8 @@ int kthFromLast(node*& head, int k) {
 }
 
 int main() {
+    OJ;
+    FIO;
     node* head = NULL;
     int data;
     cin >> data;

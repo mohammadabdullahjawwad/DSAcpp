@@ -19,9 +19,9 @@ void subsequences(char* str, char* str1, int i, int j) {
         count++;
         return;
     }
-    subsequences(str, str1, i+1, j);
+    subsequences(str, str1, i + 1, j);
     str1[j] = str[i];
-    subsequences(str, str1, i+1, j+1);
+    subsequences(str, str1, i + 1, j + 1);
 }
 
 int main() {

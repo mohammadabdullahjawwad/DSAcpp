@@ -18,7 +18,7 @@ void replacePi(char str[], int start) {
     if(strlen(str) == start) {
         return;
     }
-    if((str[start] == 'p') && (str[start+1] == 'i')) {
+    if(str[start] == 'p' && str[start+1] == 'i') {
         cout << "3.14";
         replacePi(str, start + 2);
     }

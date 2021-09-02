@@ -2,6 +2,15 @@
 #include <stack>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 void stockSpan(int arr[], int n) {
     stack<int> s;
     int ans[n] = {};
@@ -22,6 +31,8 @@ void stockSpan(int arr[], int n) {
 }
 
 int main() {
+    OJ;
+    FIO;
     int n;
     cin >> n;
     int arr[n];

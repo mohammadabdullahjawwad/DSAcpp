@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class node {
 public:
     int data;
@@ -39,7 +48,7 @@ node* merge(node* a, node* b) {
     if(a == NULL) {
         return b;
     }
-    else if(b == NULL) {
+    if(b == NULL) {
         return a;
     }
     node* c;
@@ -55,6 +64,8 @@ node* merge(node* a, node* b) {
 }
 
 int main() {
+    OJ;
+    FIO;
     int t;
     cin >> t;
     while(t--) {
@@ -73,8 +84,7 @@ int main() {
             cin >> data;
             insertAtTail(head2, data);
         }
-        node* head = NULL;
-        head = merge(head1, head2);
+        node* head = merge(head1, head2);
         print(head);
         delete head1;
         delete head2;
