@@ -2,10 +2,20 @@
 #include <stack>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 class queue {
-public:
     stack<int> a;
     stack<int> b;
+
+public:
 
     void enqueue(int i) {
         while(!a.empty()) {
@@ -27,6 +37,8 @@ public:
 };
 
 int main() {
+    OJ;
+    FIO;
     queue q;
     int n;
     cin >> n;

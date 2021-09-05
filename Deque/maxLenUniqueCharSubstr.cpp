@@ -2,7 +2,18 @@
 #include <cstring>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 int main() {
+    OJ;
+    FIO;
     char a[10000];
     cin >> a;
     int n = strlen(a);

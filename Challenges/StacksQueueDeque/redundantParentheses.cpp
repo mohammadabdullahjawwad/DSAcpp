@@ -3,6 +3,15 @@
 #include <stack>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 void redundant(string str) {
     stack<char> s;
     for(char ch : str) {
@@ -28,6 +37,8 @@ void redundant(string str) {
 }
 
 int main() {
+    OJ;
+    FIO;
     int t;
     cin >> t;
     while(t--) {

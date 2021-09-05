@@ -3,17 +3,26 @@
 #include <vector>
 using namespace std;
 
+#define FIO \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL); \
+    cout.tie(NULL);
+
+#define OJ \
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
+
 void nthPrime(vector<int> &primes) {
     bool IsPrime[100005];
     memset(IsPrime, true, sizeof(IsPrime));
-    for(int p=2; p*p<100005; p++) {
+    for(int p = 2; p * p < 100005; p++) {
         if(IsPrime[p] == true) { 
-            for(int i=p*p; i<100005; i+=p) {
+            for(int i = p * p; i < 100005; i += p) {
                 IsPrime[i] = false;
             }
         }
     }
-    for(int p=2; p<100005; p++) {
+    for(int p = 2; p < 100005; p++) {
        if(IsPrime[p]) {
            primes.push_back(p);
         }
@@ -21,6 +30,8 @@ void nthPrime(vector<int> &primes) {
 }
 
 int main() {
+    OJ;
+    FIO;
     stack<int> ao;
     stack<int> ai;
     stack<int> bi;
@@ -28,15 +39,15 @@ int main() {
     nthPrime(primes);
     int n, q;
     cin >> n >> q;
-    for(int i=0; i<n; i++) {
+    for(int i = 0; i < n; i++) {
         int val;
         cin >> val;
         ai.push(val);
     }
-    for(int i=1; i<=q; i++) {
+    for(int i = 1; i <= q; i++) {
         ao.swap(ai);
         while(!ao.empty()) {
-            if(ao.top()%primes[i-1] == 0) {
+            if(ao.top() % primes[i - 1] == 0) {
                 bi.push(ao.top());
             }
             else {
